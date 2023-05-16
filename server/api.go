@@ -28,7 +28,7 @@ func (s *APIServer) handleAccount(w http.ResponseWriter, r *http.Request) error 
 		return s.handleCreateAccount(w,r)
 	}
 
-	
+
 	if r.Method == "DELETE"{
 		return s.handleDeleteAccount(w,r)
 	}
@@ -55,8 +55,8 @@ func (s *APIServer) handleDeleteAccount(w http.ResponseWriter, r *http.Request) 
 // HELPER FUNCTIONS
 // A helper function to write JSON responses to the client
 func WriteJSON(w http.ResponseWriter, status int, v any) error {
+	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
-	w.Header().Set("Content-Type", "application/json")
 	return json.NewEncoder(w).Encode(v)
 }
 
