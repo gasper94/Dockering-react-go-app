@@ -80,11 +80,13 @@ func makeHTTPHandleFunc(f apiFunc) http.HandlerFunc {
 // The API server structure
 type APIServer struct {
 	listenAddr string
+	store Storage
 }
 
 // Function to create a new API server
-func NewApiServer(listenAddr string) *APIServer {
+func NewApiServer(listenAddr string, store Storage) *APIServer {
 	return &APIServer {
 		listenAddr: listenAddr,
+		store: 		store,
 	}
 }
