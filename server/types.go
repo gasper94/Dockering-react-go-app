@@ -5,14 +5,17 @@ import (
 	// "math/rand"
 )
 
+type CreateAccountRequest struct {
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+}
+
 type Account struct {
 	ID 					int			`json:"id"`
 	FirstName 			string		`json:"firstName"`
 	LastName 			string		`json:"lastName"`
-	EncryptedPassword 	string 		`json:"-"`
 	CreatedAt time.Time  			`json:createdAt`
 }
-
 
 func NewAccount(firstName, lastName string) *Account {
 	return &Account{
